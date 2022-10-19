@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon/bloc/pokemon_manager/pokemon_manager_cubit.dart';
+import 'package:pokemon/ui/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,15 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pokemon by phearak',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Pokemon by phearak'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+    return BlocProvider(
+      create: (_) => PokemonManagerCubit(),
+      child: MaterialApp(
+        theme: ThemeData(primaryColor: const Color(0xFFFFCB05)),
+        home: const SplashScreen(),
       ),
     );
   }
