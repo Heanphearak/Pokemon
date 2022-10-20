@@ -176,6 +176,16 @@ class _VisualBarValue extends StatelessWidget {
             color: Theme.of(context).primaryColor,
             borderRadius: BorderRadius.circular(15),
           ),
+          child: Center(
+            child: Text(
+              value.toString(),
+              style: const TextStyle(
+                color: Color(0xff3C4048),
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         )
       ],
     );
