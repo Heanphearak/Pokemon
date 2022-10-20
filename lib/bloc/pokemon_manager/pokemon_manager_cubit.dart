@@ -18,7 +18,7 @@ class PokemonManagerCubit extends Cubit<List<Pokemon>> {
     final pokemon = pokemonList.firstWhere((element) => element.id == id);
     pokemon.isFavorite = !pokemon.isFavorite;
 
-    // handle local data
+    // save to local
     if (pokemon.isFavorite) {
       await SharePreferenceUtil.saveFavoritePokemonId(id);
     } else {

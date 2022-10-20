@@ -21,7 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _init() async {
     await context.read<PokemonManagerCubit>().initData();
-    Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+    Navigator.pushAndRemoveUntil(
+        context, MaterialPageRoute(builder: (_) => HomeScreen()), (r) => true);
   }
 
   @override
