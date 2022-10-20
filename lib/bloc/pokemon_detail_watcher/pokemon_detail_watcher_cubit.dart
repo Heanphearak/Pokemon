@@ -4,16 +4,19 @@ import '../../model/pokemon.dart';
 
 class PokemonDetailWatcherCubit extends Cubit<bool> {
   Pokemon? pokemon;
+  bool isOpen = false;
 
   PokemonDetailWatcherCubit() : super(false);
 
   void openDetail(Pokemon pokemon) {
     this.pokemon = pokemon;
-    emit(true);
+    isOpen = true;
+    emit(isOpen);
   }
 
   void closeDetail() {
     pokemon = null;
-    emit(false);
+    isOpen = false;
+    emit(isOpen);
   }
 }

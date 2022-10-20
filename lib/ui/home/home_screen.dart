@@ -18,28 +18,37 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-      ),
-      body: BlocBuilder<PokemonDetailWatcherCubit, bool>(
-        builder: (_, isOpen) => PageTransitionSwitcher(
-          reverse: !isOpen,
-          transitionBuilder: (
-            Widget child,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) {
-            return SharedAxisTransition(
-              animation: animation,
-              fillColor: const Color(0xff3C4048),
-              secondaryAnimation: secondaryAnimation,
-              transitionType: transitionType,
-              child: child,
-            );
-          },
-          child: isOpen ? const PokemonDetailPage() : const PokemonGridPage(),
+    return WillPopScope(
+      onWillPop: () async {
+        if (context.read<PokemonDetailWatcherCubit>().isOpen) {
+          context.read<PokemonDetailWatcherCubit>().closeDetail();
+          return false;
+        } else {
+          return true;
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 0,
+        ),
+        body: BlocBuilder<PokemonDetailWatcherCubit, bool>(
+          builder: (_, isOpen) => PageTransitionSwitcher(
+            reverse: !isOpen,
+            transitionBuilder: (
+              Widget child,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+            ) {
+              return SharedAxisTransition(
+                animation: animation,
+                fillColor: const Color(0xff3C4048),
+                secondaryAnimation: secondaryAnimation,
+                transitionType: transitionType,
+                child: child,
+              );
+            },
+            child: isOpen ? const PokemonDetailPage() : const PokemonGridPage(),
+          ),
         ),
       ),
     );
