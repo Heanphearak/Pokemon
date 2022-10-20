@@ -9,7 +9,7 @@ class TypeTagWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 2.5),
-      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(4),
@@ -18,7 +18,7 @@ class TypeTagWidget extends StatelessWidget {
         text.toLowerCase(),
         style: const TextStyle(
           color: Color(0xff3C4048),
-          fontSize: 10,
+          fontSize: 12,
           fontWeight: FontWeight.w600,
         ),
       ),

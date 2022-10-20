@@ -33,7 +33,7 @@ class PokemonDetailPage extends StatelessWidget {
                             .map((e) => TypeTagWidget(text: e))
                             .toList(),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 16),
                       Text(
                         pokemon.description,
                         style: const TextStyle(
@@ -41,7 +41,7 @@ class PokemonDetailPage extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 18),
                       Table(
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
@@ -205,13 +205,18 @@ class _VisualBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * .25,
+      height: MediaQuery.of(context).size.width * .25,
       decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(4)),
-      padding: const EdgeInsets.all(25),
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      // padding: const EdgeInsets.all(25),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(iconAssetPath, width: 20, height: 20),
+          const SizedBox(height: 4),
           Text(
             label,
             style: const TextStyle(
